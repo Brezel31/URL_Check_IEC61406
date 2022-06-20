@@ -18,6 +18,7 @@ public class Main {
         }
         String[] splittedDomain;
         splittedDomain = getSplittedDomain(DOMAIN);
+        checkCase(splittedDomain[0]);
         if (args.length > 1) {
             API_KEY = args[1];
             checkDomain(splittedDomain[0]);
@@ -27,14 +28,17 @@ public class Main {
 
         checkString(DOMAIN);
     }
+    private static void checkCase(String yourDomain){
+        if (!yourDomain.toLowerCase().equals(yourDomain)){
+            System.out.println("Großbuchstaben sind im Path nicht erlaubt"); //"Capital letters are not allowed in the path"
+        }
+    }
 
     private static void checkDomain(String yourDomain) {
 
         String url = "https://domain-availability.whoisxmlapi.com/api/v1?"
                 + "apiKey=" + API_KEY + "&domainName=" + yourDomain;
-        if (!yourDomain.toLowerCase().equals(yourDomain)){
-            System.out.println("Großbuchstaben sind im Path nicht erlaubt"); //"Capital letters are not allowed in the path"
-        }
+
         try (java.util.Scanner s =
                      new java.util.Scanner(new java.net.URL(url).openStream())) {
             // if domainAvailability = "UNAVAILABLE" everything is ok, it seems to be a valid domain
