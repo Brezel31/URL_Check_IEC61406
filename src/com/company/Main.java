@@ -23,7 +23,7 @@ public class Main {
             API_KEY = args[1];
             checkDomain(splittedDomain[0]);
         } else {
-            System.out.println("Kein WHOISXML-API-Key vorhanden; check for free demo key: https://whois.whoisxmlapi.com/");
+            System.out.println("No WHOISXML-API-Key available; check for free demo key: https://whois.whoisxmlapi.com/");
         }
 
         checkString(DOMAIN);
