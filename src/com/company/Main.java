@@ -52,12 +52,13 @@ public class Main {
     private static void checkDomain(String yourDomain) {
 
         String url = "https://domain-availability.whoisxmlapi.com/api/v1?"
-                + "apiKey=" + API_KEY + "&domainName=" + yourDomain;
+                + "apiKey=" + API_KEY + "&domainName=" + yourDomain +"&mode=DNS_AND_WHOIS";
 
         try (java.util.Scanner s =
                      new java.util.Scanner(new java.net.URL(url).openStream())) {
             // if domainAvailability = "UNAVAILABLE" everything is ok, it seems to be a valid domain
             System.out.println(s.useDelimiter("\\A").next());
+
         } catch (MalformedURLException error) {
             System.out.println("Error during URL creation:  " + yourDomain);
         } catch (Exception exception) {
